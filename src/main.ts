@@ -1,8 +1,15 @@
 import { getRandomJoke } from "./api/jokesApi";
 
+const jokeCont= document.getElementById("joke");
+const btn = document.getElementById("jokeBtn") as HTMLButtonElement | null;
+
 const showJoke = async () => {
     const joke = await getRandomJoke();
-    console.log("Joke:", joke.joke);
+    if (jokeCont) {
+        jokeCont.textContent = joke.joke;
+    }
 }
 
-showJoke();
+if (btn) {
+    btn.addEventListener("click", showJoke);
+}
