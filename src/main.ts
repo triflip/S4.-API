@@ -1,29 +1,23 @@
-import { getRandomJoke } from "./api/jokesApi";
-import { rateJoke } from "./logic/jokeRating";
+import { getWeather } from "./api/weatherApi";
+import { weatherIcons } from "./utils/weather-icons";
 
-const btn = document.getElementById("jokeBtn") as HTMLButtonElement | null;
-const renderOutput = document.getElementById("output") as HTMLElement | null;
+const weatherIcon = document.getElementById("weather-icon") as HTMLImageElement;
+const weatherText = document.getElementById("weather-text") as HTMLSpanElement;
+const weatherLocation = document.getElementById("weather-location") as HTMLSpanElement;
 
-const showJoke = async () => {
-    const joke = await getRandomJoke();
-    if (renderOutput) {
-        renderOutput.textContent = joke.joke;
-    }
-}
+navigator.geolocation.getCurrentPosition(
+  async (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    console.log("User location:", lat, lon);
 
-if (btn) {
-    btn.addEventListener("click", showJoke);
-}
+    const { temperature, weathercode, locationName } = await getWeather(lat, lon);
 
-const scoreButtons = document.querySelectorAll("#score-buttons button");
-
-scoreButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        const score = parseInt(btn.getAttribute("data-score") || "0");
-        const jokeText = renderOutput?.textContent || "";
-        if (jokeText && score) {
-            rateJoke(jokeText, score);
-        }
-    });
-});
-
+    weatherIcon.src = weatherIcons[weathercode] || weatherIcons[3];
+    weatherText.textContent = `${temperature}°C`;
+    weatherLocation.textContent = locationName;
+  },
+  (error) => {
+    console.error("Error getting location", error);
+  }
+);
