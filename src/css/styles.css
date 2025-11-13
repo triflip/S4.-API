@@ -1,98 +1,58 @@
+:root {
+  --botton-color: #febb04;
+  --hover-color: #fbff20;
+  --font-color: #333;
+  --background-color: #f7ff89;
+  --border-color: #ddd;
+  --white--color: #fff;
+}
 
-    :root {
-        --primary-color: #2933f1;
-        --secondary-color: #5c97e8;
-        --font-color: #333;
-        --background-color: #f4f4f4;
-        --border-color: #ddd;
-
-    }
-    
-    body {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--border-color);
-    }       
-    h1 {
-        color: var(--font-color);
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card-joke {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: var(--background-color);
-        border: 1px solid var(--border-color);
-        border-radius: 5rem;
-        box-shadow: 0 4px 5px rgba(0,0,0,0.1);
-        margin: 1.25rem;
-        padding: 1.25rem;
-        width: 40%;  
-        min-height: 20rem;     
-        transition: transform 0.2s;
-    }
-    
-    .card-joke:hover {
-        transform: scale(1.05);
-    }
-
-    #jokeBtn {
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        border: none;
-        padding: 0.625rem 1.25rem;
-        cursor: pointer;
-        font-size: 1rem;
-        border-radius: 0.2;
-        margin: 1.25rem;
-    }
-    #jokeBtn:hover {
-        background-color: var(--secondary-color);
-        transform: scale(1.05);
-    }
-
-    p {
-        color: #666;
-        line-height: 1.6;
-        margin: 1.25rem;
-    }
-    #output {
-        margin-top: 1.25rem;
-        font-size: 1.125rem;
-        color: var(--font-color);
-        text-align: center;
-    }
-    button {
-        cursor: pointer;
-        padding: 0.625rem 1.25rem;
-        border: none;
-        border-radius: 0.2rem;
-        background-color: var(--primary-color);
-        color: var(--background-color);
-        font-size: 1rem;
-        transition: background-color 0.2s;
-    }
-    
-    #weather-header {
+body {
   display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-family: 'Domine', sans-serif;  
+  padding: 0;
+  background-color: var(--border-color);
+  background-image: url(../assets/chucki-bg/Chuki.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1 {
+  color: var(--font-color);
+  text-align: center;
+  margin: 1.25rem;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  text-shadow: 
+    -2px -2px 0 var(--white--color), /* dalt esquerra */
+     2px -2px 0 var(--white--color), /* dalt dreta */
+    -2px 2px 0 var(--white--color),  /* baix esquerra */
+     2px 2px 0 var(--white--color); /* baix dreta */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+#weather-header {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  background-color: #f0f0f0;
-  position: relative;
+  padding: 0.75rem;
+  background-color: var(--white--color);
+  flex-wrap: wrap;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 15%;
+  gap: 1rem;
   z-index: 10;
+  border-radius: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #weather-icon {
@@ -100,9 +60,82 @@
   height: 48px;
 }
 
-#weather-info {
+.card-joke {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: 3rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border-color: var(--font-color);
+  margin: 1.25rem;
+  padding: 1.25rem;
+  width: 30%;
+  min-height: 20rem;
+  transition: transform 0.2s;
+}
+
+.card-joke:hover {
+  transform: scale(1.05);
+}
+
+#jokeBtn {
+  background-color: var(--botton-color);
+  color: var(--font-color);
+  border-color: var(--border-color);
+  border-radius: 2rem;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
   font-size: 1rem;
-  color: #333;
+  border-radius: 0.2;
+  margin: 1.25rem;
+}
+#jokeBtn:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+p {
+  color: #666;
+  line-height: 1.6;
+  margin: 1.25rem;
+}
+#output {
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  color: var(--font-color);
+  text-align: center;
+}
+button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-color: var(--border-color);
+  border-radius: 50%;
+  background-color: var(--botton-color);
+  color: var(--background-color);
+  font-size: 2rem;
+  transition: background-color 0.2s;
+}
+
+#score-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  gap: 1rem;
+  width: 30%;
+}
+
+#score-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#score-buttons button:hover {
+  transform: scale(1.1);
+  background-color: var(--hover-color);
 }

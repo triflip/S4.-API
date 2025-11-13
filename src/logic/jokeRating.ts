@@ -4,11 +4,11 @@ type JokeReport = {
   date: string;
 };
 
-const reportAcudits: JokeReport[] = [];
+const reportJoke: JokeReport[] = [];
 
 export const rateJoke = (joke: string, score: number) => {
     const date = new Date().toISOString();
     const report: JokeReport = { joke, score, date };
-  reportAcudits.push(report);
-  console.log("reportAcudits:", reportAcudits);
+  reportJoke.push(report);
+  console.log("Report:", report);
 };

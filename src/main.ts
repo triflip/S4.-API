@@ -21,3 +21,20 @@ navigator.geolocation.getCurrentPosition(
     console.error("Error getting location", error);
   }
 );
+
+import { getRandomJoke } from "./api/jokesApi";
+
+const jokeBtn = document.getElementById("jokeBtn") as HTMLButtonElement;
+const jokeOutput = document.getElementById("output") as HTMLDivElement;
+
+const showJoke = async () => {
+  try {
+    const joke = await getRandomJoke();
+    jokeOutput.textContent = joke.joke;
+  } catch (error) {
+    console.error("Error loading the joke:", error);
+    jokeOutput.textContent = "The joke couldn't load be loaded 😢";
+  }
+};
+
+jokeBtn.addEventListener("click", showJoke);
