@@ -6,7 +6,7 @@ import icon45 from "../assets/weather-icons/45.gif";
 import icon51 from "../assets/weather-icons/51.gif";
 import icon61 from "../assets/weather-icons/61.gif";
 import icon80 from "../assets/weather-icons/80.gif";
-import lluna from "../assets/weather-icons/lluna.gif";
+import moon from "../assets/weather-icons/lluna.gif";
 
 export const weatherIcons: Record<number, string> = {
   0: icon0,
@@ -19,4 +19,4 @@ export const weatherIcons: Record<number, string> = {
   80: icon80
 };
 
-export const moonIcon = lluna;
+export const moonIcon = moon;
