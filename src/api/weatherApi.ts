@@ -1,3 +1,4 @@
+
 export async function getWeather(lat: number, lon: number): Promise<{
   temperature: number;
   weathercode: number;
@@ -11,13 +12,13 @@ export async function getWeather(lat: number, lon: number): Promise<{
   const geoResponse = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
   const geoData = await geoResponse.json();
 
-  
+  const address = geoData.address || {};
   const locationName =
-    geoData.address.city ||
-    geoData.address.town ||
-    geoData.address.village ||
-    geoData.address.county ||
-    "Unknow location 🤦‍♂️";
+    address.city ||
+    address.town ||
+    address.village ||
+    address.county ||
+    "Unknow location 🤷";
 
   return {
     temperature: data.current_weather.temperature,
