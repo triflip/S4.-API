@@ -18,6 +18,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
+
 }
 
 h1 {
@@ -27,10 +29,10 @@ h1 {
   font-size: 2.5rem;
   line-height: 1.1;
   text-shadow: 
-    -2px -2px 0 var(--white--color), /* dalt esquerra */
-     2px -2px 0 var(--white--color), /* dalt dreta */
-    -2px 2px 0 var(--white--color),  /* baix esquerra */
-     2px 2px 0 var(--white--color); /* baix dreta */
+    -2px -2px 0 var(--white--color), 
+     2px -2px 0 var(--white--color), 
+    -2px 2px 0 var(--white--color),  
+     2px 2px 0 var(--white--color); 
 }
 
 main {
@@ -49,7 +51,6 @@ main {
   flex-wrap: wrap;
   top: 0;
   width: 15%;
-  gap: 1rem;
   z-index: 10;
   border-radius: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -70,8 +71,11 @@ main {
   border-color: var(--font-color);
   margin: 1.25rem;
   padding: 1.25rem;
+  margin-left: 3rem;
   width: 30%;
-  min-height: 20rem;
+  min-height: 17rem;
+  max-height: 8rem;        
+  overflow-y: auto; 
   transition: transform 0.2s;
 }
 
@@ -123,6 +127,7 @@ button {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  margin-left: 3.5rem;
   padding: 0 1rem;
   gap: 1rem;
   width: 30%;
@@ -133,6 +138,26 @@ button {
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+#score-buttons button {
+  animation: bounce 2s infinite;
+}
+
+#score-buttons button:nth-child(1) {
+  animation-delay: 0s;
+}
+#score-buttons button:nth-child(2) {
+  animation-delay: 0.3s;
+}
+#score-buttons button:nth-child(3) {
+  animation-delay: 0.6s;
 }
 
 #score-buttons button:hover {
