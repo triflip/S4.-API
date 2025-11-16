@@ -1,7 +1,8 @@
 import { getWeather } from "./api/weatherApi";
-import { weatherIcons } from "./utils/weather-icons";
+import { weatherIcons , getWeatherIcon} from "./utils/weather-icons";
 import { rateJoke } from "./logic/jokeRating";
 import { getRandomJoke } from "./api/jokesApi";
+import { getSunTime } from "./api/sunTimeApi";
 
 
 const weatherIcon = document.getElementById("weather-icon") as HTMLImageElement;
@@ -43,13 +44,20 @@ navigator.geolocation.getCurrentPosition(
   async (position) => {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
-    console.log("User location:", lat, lon);
 
     const { temperature, weathercode, locationName } = await getWeather(lat, lon);
+    const { sunrise, sunset } = await getSunTime(lat, lon);
 
-    weatherIcon.src = weatherIcons[weathercode] || weatherIcons[3];
+    const now = new Date().getTime();
+    const sunriseTime = new Date(sunrise).getTime();
+    const sunsetTime = new Date(sunset).getTime();
+
+    const isNight = now < sunriseTime || now > sunsetTime;
+
+    weatherIcon.src = getWeatherIcon(weathercode, isNight);
     weatherText.textContent = `${temperature}°C`;
     weatherLocation.textContent = locationName;
+
   },
   (error) => {
     console.error("Error getting location", error);

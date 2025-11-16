@@ -20,3 +20,9 @@ export const weatherIcons: Record<number, string> = {
 };
 
 export const moonIcon = moon;
+export const defaultIcon = icon3;
+
+export function getWeatherIcon(weathercode: number, isNigth: boolean): string {
+  if (isNigth) return moonIcon;
+  return weatherIcons[weathercode] ?? defaultIcon;
+}
