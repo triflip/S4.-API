@@ -1,8 +1,8 @@
-import { getWeather } from "./api/weatherApi";
-import { getWeatherIcon} from "./utils/weather-icons";
+
 import { rateJoke } from "./logic/jokeRating";
 import { getRandomJoke } from "./api/jokesApi";
-import { getSunTime } from "./api/sunTimeApi";
+import { getCurrentPosition } from "./api/geolocation";
+import { updateWeatherUi } from "./logic/weatherDisplay";
 
 
 const weatherIcon = document.getElementById("weather-icon") as HTMLImageElement;
@@ -39,27 +39,9 @@ scoreButtons.forEach((button) => {
   });
 });
 
-
-navigator.geolocation.getCurrentPosition(
-  async (position) => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-
-    const { temperature, weathercode, locationName } = await getWeather(lat, lon);
-    const { sunrise, sunset } = await getSunTime((lat), (lon));
-
-    const now = new Date().getTime();
-    const sunriseTime = new Date(sunrise).getTime();
-    const sunsetTime = new Date(sunset).getTime();
-
-    const isNight = now < sunriseTime || now > sunsetTime;
-
-    weatherIcon.src = getWeatherIcon(weathercode, isNight);
-    weatherText.textContent = `${temperature}°C`;
-    weatherLocation.textContent = locationName;
-
-  },
-  (error) => {
-    console.error("Error getting location", error);
-  }
-);
+try {
+  const { lat, lon } = await getCurrentPosition();
+  await updateWeatherUi(lat, lon, weatherIcon, weatherText, weatherLocation);
+} catch (error) {
+  console.error("Error gettin location", error)
+}
