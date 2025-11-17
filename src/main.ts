@@ -1,5 +1,5 @@
 import { getWeather } from "./api/weatherApi";
-import { weatherIcons , getWeatherIcon} from "./utils/weather-icons";
+import { getWeatherIcon} from "./utils/weather-icons";
 import { rateJoke } from "./logic/jokeRating";
 import { getRandomJoke } from "./api/jokesApi";
 import { getSunTime } from "./api/sunTimeApi";
@@ -46,7 +46,7 @@ navigator.geolocation.getCurrentPosition(
     const lon = position.coords.longitude;
 
     const { temperature, weathercode, locationName } = await getWeather(lat, lon);
-    const { sunrise, sunset } = await getSunTime(lat, lon);
+    const { sunrise, sunset } = await getSunTime((lat), (lon));
 
     const now = new Date().getTime();
     const sunriseTime = new Date(sunrise).getTime();
