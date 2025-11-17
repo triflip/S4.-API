@@ -4,7 +4,8 @@
   --font-color: #333;
   --background-color: #f7ff89;
   --border-color: #ddd;
-  --white--color: #fff;
+  --white-color: #fff;
+  --accent-color: #ee210f;
 }
 
 body {
@@ -29,10 +30,10 @@ h1 {
   font-size: 2.5rem;
   line-height: 1.1;
   text-shadow: 
-    -2px -2px 0 var(--white--color), 
-     2px -2px 0 var(--white--color), 
-    -2px 2px 0 var(--white--color),  
-     2px 2px 0 var(--white--color); 
+    -2px -2px 0 var(--white-color), 
+     2px -2px 0 var(--white-color), 
+    -2px 2px 0 var(--white-color),  
+     2px 2px 0 var(--white-color); 
 }
 
 main {
@@ -47,7 +48,7 @@ main {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem;
-  background-color: var(--white--color);
+  background-color: var(--white-color);
   flex-wrap: wrap;
   top: 0;
   width: 15%;
@@ -100,16 +101,38 @@ main {
 }
 
 p {
-  color: #666;
+  color: #2f2f2f;
   line-height: 1.6;
   margin: 1.25rem;
 }
+
 #output {
   margin-top: 1.25rem;
   font-size: 1.125rem;
   color: var(--font-color);
   text-align: center;
 }
+
+#output.error-message, 
+#weather-error.error-message {
+  color: var(--white-color);
+  background-color: var(--accent-color);
+  border-radius: 0.5rem;
+}
+
+#output.error-message {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+#weather-error.error-message {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  white-space: pre-line;
+}
+
+
+
 button {
   cursor: pointer;
   padding: 0.5rem 1rem;

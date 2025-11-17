@@ -22,7 +22,8 @@ const showJoke = async () => {
     actualJoke = joke.joke;
   } catch (error) {
     console.error("Error loading the joke:", error);
-    jokeOutput.textContent = "The joke couldn't be loaded 😢";
+    jokeOutput.textContent = "Sorry...the joke couldn't be loaded 😢";
+    jokeOutput.classList.add("error-message");
   }
 };
 jokeBtn.addEventListener("click", showJoke);
@@ -39,9 +40,14 @@ scoreButtons.forEach((button) => {
   });
 });
 
+const weatherError = document.getElementById("weather-error") as HTMLDivElement;
+
 try {
   const { lat, lon } = await getCurrentPosition();
   await updateWeatherUi(lat, lon, weatherIcon, weatherText, weatherLocation);
+   weatherError.textContent = "";
 } catch (error) {
   console.error("Error gettin location", error)
+   weatherError.textContent = "The weather\ncan't be loaded";
+   weatherError.classList.add("error-message");
 }
