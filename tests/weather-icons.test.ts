@@ -1,5 +1,7 @@
 
 import { getWeatherIcon } from "../src/utils/weather-icons";
+import { describe, test, expect } from "vitest";
+
 
 describe("getWeatherIcon", () => {
     test("returns sun icon for code 0 at day", () => {

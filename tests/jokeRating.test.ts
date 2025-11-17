@@ -1,6 +1,6 @@
 
 import { rateJoke, reportJoke } from "../src/logic/jokeRating";
-import { describe, test, expect, beforeEach, vi } from "vitest";
+import { test, expect, beforeEach, vi } from "vitest";
 
 beforeEach(() => {
     reportJoke.length = 0;

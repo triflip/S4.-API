@@ -1,5 +1,8 @@
 
 import { getSunTime } from "../src/api/sunTimeApi";
+import { describe, test, expect } from "vitest";
+
+
 
 describe("getSunTime", () => {
     test("returns sunrise and sunset fields for know coordinates", async () => {
