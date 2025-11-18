@@ -7,7 +7,6 @@ export interface WeatherResult {
 }
 
 export const getWeather = async (lat: number, lon: number): Promise<WeatherResult> => {
-  
   const weatherData = await fetchData<{ current_weather: { temperature: number; weathercode: number } }>(
     `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
   );
