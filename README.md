@@ -100,6 +100,8 @@ S4-API/
    ├─ api/                 # API modules (weatherApi.ts, jokesApi.ts...)
    ├─ logic/               # Business logic
    │   └─ jokeRanking.ts   # Handles joke rating logic
+   |   └─ weatherdisplay.ts # Render weather
+   |   └─ geolocation.ts   # Get current position
    ├─ utils/               # Utility helpers
    │   └─ weather-icons.ts # Maps weather codes to icons
    ├─ main.ts              # Application entry point

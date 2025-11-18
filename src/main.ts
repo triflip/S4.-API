@@ -1,7 +1,7 @@
 
 import { rateJoke } from "./logic/jokeRating";
 import { getRandomJoke } from "./api/jokesApi";
-import { getCurrentPosition } from "./api/geolocation";
+import { getCurrentPosition } from "./logic/geolocation";
 import { updateWeatherUi } from "./logic/weatherDisplay";
 
 
