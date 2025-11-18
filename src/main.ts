@@ -15,6 +15,7 @@ const jokeOutput = document.getElementById("output") as HTMLDivElement;
 let actualJoke = "";
 
 
+
 const showJoke = async () => {
   try {
     const joke = await getRandomJoke();
@@ -27,6 +28,10 @@ const showJoke = async () => {
   }
 };
 jokeBtn.addEventListener("click", showJoke);
+
+(async () => {
+  await showJoke();
+})();
 
 const scoreButtons = document.querySelectorAll<HTMLButtonElement>("#score-buttons button");
 
