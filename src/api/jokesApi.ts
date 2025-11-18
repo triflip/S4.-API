@@ -1,3 +1,4 @@
+
 import { getChuckJoke } from "./chuckSaysApi";
 
 export interface Joke {
@@ -5,23 +6,19 @@ export interface Joke {
   joke: string;
 }
 
+import { fetchData } from "../logic/fetcher"; 
+
 export const getDadJoke = async (): Promise<Joke> => {
-  const response = await fetch("https://icanhazdadjoke.com/", {
-    headers: {
-      Accept: "application/json",
-    },
-  });
+  const data = await fetchData<{ id: string; joke: string }>(
+    "https://icanhazdadjoke.com/"
+  );
 
-  if (!response.ok) {
-    throw new Error("Couldn't get the joke");
-  }
-
-  const data = await response.json();
   return {
     id: data.id,
     joke: data.joke,
   };
 };
+
 
 export const getRandomJoke = async (): Promise<Joke> => {
   const random = Math.random();

@@ -1,6 +1,17 @@
+import { fetchData } from "../logic/fetcher";
 
-export const getChuckJoke = async (): Promise<{joke:string}> => {
-    const response = await fetch("https://api.chucknorris.io/jokes/random");
-    const data = await response.json();
-    return{joke: data.value};
+export interface Joke {
+  id: string;
+  joke: string;
+}
+
+export const getChuckJoke = async (): Promise<Joke> => {
+  const data = await fetchData<{ id: string; value: string }>(
+    "https://api.chucknorris.io/jokes/random"
+  );
+
+  return {
+    id: data.id ?? "chuck",  
+    joke: data.value,         
+  };
 };
