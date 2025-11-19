@@ -1,6 +1,7 @@
 import { initJokeUi } from "./logic/jokeUi";
 import { getCurrentPosition } from "./logic/geolocation";
 import { updateWeatherUi } from "./logic/weatherDisplay";
+import { initWeatherUi } from "./logic/weatherInit";
 
 const weatherIcon = document.getElementById("weather-icon") as HTMLImageElement;
 const weatherText = document.getElementById("weather-text") as HTMLSpanElement;
@@ -13,13 +14,4 @@ const scoreButtons = document.querySelectorAll<HTMLButtonElement>("#score-button
 
 initJokeUi(jokeBtn, scoreButtons, jokeOutput);
 
-
-try {
-  const { lat, lon } = await getCurrentPosition();
-  await updateWeatherUi(lat, lon, weatherIcon, weatherText, weatherLocation);
-  weatherError.textContent = "";
-} catch (error) {
-  console.error("Error getting location", error);
-  weatherError.textContent = "The weather\ncan't be loaded";
-  weatherError.classList.add("error-message");
-}
+initWeatherUi(weatherIcon, weatherText, weatherLocation, weatherError);
