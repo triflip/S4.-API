@@ -1,5 +1,5 @@
 import { getRandomJoke } from "../api/jokesApi";
-import { rateJoke } from "../logic/jokeRating";
+import { rateJoke } from "./jokeRating";
 
 export function initJokeUi(
   jokeBtn: HTMLButtonElement,

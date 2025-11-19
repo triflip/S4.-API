@@ -1,6 +1,4 @@
 import { initJokeUi } from "./logic/jokeUi";
-import { getCurrentPosition } from "./logic/geolocation";
-import { updateWeatherUi } from "./logic/weatherDisplay";
 import { initWeatherUi } from "./logic/weatherInit";
 
 const weatherIcon = document.getElementById("weather-icon") as HTMLImageElement;
