@@ -79,8 +79,33 @@ https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=su
 
 ## 📂 Project Structure
 
-<pre> ```text S4-API/ ├─ index.html # Root HTML file (entry point for Vite) ├─ README.md # Project documentation ├─ package.json # Dependencies and scripts ├─ package-lock.json # Dependency lock file ├─ tsconfig.json # TypeScript configuration ├─ tsconfig.app.json # App-specific TypeScript config ├─ vite.config.js # Vite configuration (proxy, build, etc.) ├─ eslint.config.js # ESLint configuration ├─ .gitignore # Git ignore rules ├─ public/ # Static assets served directly │ └─ vite.svg # Vite logo or static asset ├─ node_modules/ # Installed dependencies (auto-generated) ├─ test/ # Vitest testing files │ ├─ jokeRanking.test.ts # Unit tests for joke ranking logic │ └─ weatherApi.test.ts # Unit tests for weather API └─ src/ ├─ assets/ # Images and backgrounds ├─ api/ # API modules (weatherApi.ts, jokesApi.ts...) ├─ logic/ # Business logic │ └─ jokeRanking.ts # Handles joke rating logic │ └─ weatherdisplay.ts # Render weather │ └─ geolocation.ts # Get current position ├─ utils/ # Utility helpers │ └─ weather-icons.ts # Maps weather codes to icons ├─ main.ts # Application entry point └─ styles.css # Global styles ``` </pre>
-
+```text
+📂 S4-API/
+├── 📄 index.html             # Root HTML file (entry point for Vite)
+├── 📄 README.md              # Project documentation
+├── 📄 package.json           # Dependencies and scripts
+├── 📄 package-lock.json      # Dependency lock file
+├── 📄 tsconfig.json          # TypeScript configuration
+├── 📄 vite.config.js         # Vite configuration
+├── 📄 eslint.config.js       # ESLint configuration
+├── 📄 .gitignore             # Git ignore rules
+├── 📂 public/                # Static assets
+│   └── 🖼️ vite.svg           # Vite logo
+├── 📂 node_modules/          # Installed dependencies
+├── 📂 test/                  # Vitest testing files
+│   ├── 🧪 jokeRanking.test.ts
+│   └── 🧪 weatherApi.test.ts
+└── 📂 src/
+    ├── 📂 assets/            # Images and backgrounds
+    ├── 📂 api/               # API modules
+    ├── 📂 logic/             # Business logic
+    │   ├── 📜 jokeRanking.ts
+    │   ├── 📜 weatherdisplay.ts
+    │   └── 📜 geolocation.ts
+    ├── 📂 utils/             # Utility helpers
+    │   └── 📜 weather-icons.ts
+    ├── 📜 main.ts            # Application entry point
+    └── 🎨 styles.css         # Global styles
 
 
 ---
